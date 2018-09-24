@@ -17,11 +17,11 @@ def getReposAndCommits(user):
     list of the names of the repositories that the user has, along with the
     number of commits that are in each of the listed repositories. """
     r = requests.get('https://api.github.com/users/' + user + '/repos')
-    repos = json.loads(r.content)
+    repos = json.loads(r.content.decode('utf-8'))
     if 'message' in repos: # message: Not found will appear in dict if user is invalid
         yield "Error: User not found. Please try again."
     else:
         for rep in repos:
             c = requests.get('https://api.github.com/repos/' + user + '/' + rep['name'] + '/commits')
-            commits = json.loads(c.content)
+            commits = json.loads(c.content.decode('utf-8'))
             yield "Repo: " + rep['name'] + " Number of commits: " + str(len(commits))
