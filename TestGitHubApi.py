@@ -25,11 +25,7 @@ class TestGetReposAndCommits(unittest.TestCase):
         for line in getReposAndCommits('richkempinski'):
             results.append(line)
         self.assertEqual(results, ['Repo: hellogitworld Number of commits: 30', 'Repo: helloworld Number of commits: 2', 'Repo: Project1 Number of commits: 2', 'Repo: threads-of-life Number of commits: 1'], 'Richkempinski has 4 repos.')
-    def testQueKipz(self):
-        results = list()
-        for line in getReposAndCommits('quekipz'):
-            results.append(line)
-        self.assertEqual(results, ['Repo: helloworld Number of commits: 2', 'Repo: HW09 Number of commits: 3', 'Repo: triangle-classification Number of commits: 4', 'Repo: Triangle567 Number of commits: 7'], 'Quekipz has 4 repos.')
+    # Note: Originally included my own user 'quekipz' but realized that my commit count increases when I push the assignment, which fails the test.
 
 
 if __name__ == '__main__':
